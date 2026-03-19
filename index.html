@@ -44,8 +44,16 @@
             background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
             background-size: 200% 200%;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: var(--accent-indigo);
             animation: gradientShift 3s ease infinite;
+        }
+
+        @supports (-webkit-background-clip: text) or (background-clip: text) {
+            .gradient-text {
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
         }
 
         @keyframes gradientShift {
