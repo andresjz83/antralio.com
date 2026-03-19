@@ -22,7 +22,10 @@ It extracts the inline `<style>` blocks from `index.html` and checks every CSS p
 - Last 2 iOS versions
 - Firefox ESR
 
-If you use a CSS feature that isn't supported by any of those browsers, the commit is blocked. If you've added a proper fallback (e.g. via `@supports`), add a `/* stylelint-disable-next-line plugin/browser-compat -- reason */` comment to suppress the warning.
+If you use a CSS feature that isn't supported by any of those browsers, **the commit is blocked**. Fix it by either:
+
+- Using a different CSS property/value that's universally supported
+- Wrapping the feature in `@supports` with a visible fallback for unsupported browsers (see `.gradient-text` in `index.html` for an example)
 
 ### Run manually
 
