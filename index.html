@@ -400,6 +400,10 @@
                         label: 'Book a demo call',
                         target: target,
                     });
+                    // Track clicks on the scheduling button (iframe is invisible to autocapture)
+                    target.addEventListener('click', function() {
+                        posthog.capture('booking_button_clicked', { location: target.id === 'hero-booking-btn' ? 'hero' : 'footer' });
+                    });
                 }
             });
         });
@@ -415,6 +419,7 @@
                     method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
                 });
                 if (response.ok) {
+                    posthog.capture('email_submitted', { email: form.querySelector('input[name="email"]').value });
                     form.classList.add('hidden');
                     document.getElementById('inline-success').classList.remove('hidden');
                 } else {
