@@ -1,0 +1,6 @@
+[tools]
+node = "22"
+
+[tasks.pre-commit]
+description = "Run CSS browser compatibility check"
+run = "./scripts/lint-css.sh"
