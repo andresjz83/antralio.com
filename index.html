@@ -85,7 +85,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .stat-number { display: inline-block; }
     </style>
 </head>
 <body class="antialiased">
@@ -117,30 +116,19 @@
     <header class="max-w-6xl mx-auto text-center pt-16 pb-12 px-4">
         <h1 class="text-5xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-none hero-animate">
             Stop Chasing Data.<br>
-            Generate <span class="gradient-text">Alpha.</span>
+            <span class="gradient-text">Close Faster.</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed hero-animate" style="animation-delay: 0.2s;">
+        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed hero-animate" style="animation-delay: 0.2s;">
             Your team spends 80% of their time gathering data.
-            Antralio <span class="text-white border-b border-indigo-500">dramatically reduces that work</span>.
+            Antralio <span class="text-white border-b border-indigo-500">extracts, structures, and delivers it in minutes</span>.
         </p>
-        <p class="text-sm text-gray-500 mb-12 hero-animate" style="animation-delay: 0.3s;">Trusted by 5+ PE firms</p>
 
-        <div class="hero-animate" style="animation-delay: 0.4s;">
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
-                <form id="inline-signup" action="https://formspree.io/f/xpqdoyor" method="POST" class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                    <input type="hidden" name="action" value="start-pilot">
-                    <input type="email" name="email" placeholder="Work email" required
-                           class="px-5 py-4 bg-black border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition text-lg w-full sm:w-72">
-                    <button type="submit" class="bg-white text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 transition shadow-[0_0_20px_rgba(255,255,255,0.3)] whitespace-nowrap">
-                        Start Your Pilot
-                    </button>
-                </form>
+        <div class="hero-animate" style="animation-delay: 0.3s;">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+                <span id="hero-booking-btn"><a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" class="inline-block bg-white text-black px-10 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]">Book a Demo</a></span>
             </div>
-            <div id="inline-success" class="hidden mb-6 text-green-400 font-semibold text-center">✓ We'll send setup instructions shortly.</div>
-            <div class="text-center text-gray-400 text-sm font-medium">
-                <span class="mr-2">Or</span><span id="hero-booking-btn"><a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" class="text-indigo-400 hover:text-white transition">book a demo call →</a></span>
-            </div>
+            <p class="text-gray-500 text-sm">15 minutes · See it work on a live document</p>
         </div>
     </header>
 
@@ -149,7 +137,7 @@
         <div class="text-center mb-12">
             <p class="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">How It Works</p>
             <h2 class="text-3xl md:text-5xl font-bold mb-4">Documents in. Clean data out.</h2>
-            <p class="text-gray-300 text-lg max-w-2xl mx-auto">AI that reads your leases, inbound deal flow, and subscription documents the way your best analyst would. Every extracted number traces back to its source.</p>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">AI that reads your leases, rent rolls, CIMs, and subscription documents the way your best analyst would. Every extracted number traces back to its source.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-0 items-stretch">
@@ -252,18 +240,20 @@
     <!-- Stats + Value Prop -->
     <section class="py-16 px-8 bg-[#171717]">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Your analysts aren't analyzing.</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Get your analysts back to deal work.</h2>
             <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
-                <strong class="text-white">Antralio makes data enter once and flow everywhere.</strong> Your team goes back to what you hired them for: sourcing deals and managing assets.
+                Data enters once and flows everywhere — into your models, your reports, your portfolio monitoring. <strong class="text-white">Your team goes back to sourcing deals and managing assets.</strong>
             </p>
-            <div class="grid grid-cols-2 gap-6 max-w-md mx-auto">
+            <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
                 <div class="p-5 border-t-2 border-indigo-500 bg-indigo-500/5 rounded-b-lg">
-                    <div class="text-3xl font-bold"><span class="stat-number" data-target="98" data-suffix="%" data-duration="500">98%</span></div>
-                    <div class="text-sm text-gray-400 uppercase tracking-tight mt-1">Analyst-Verified Accuracy</div>
+                    <div class="text-3xl font-bold">98%</div>
+                    <div class="text-sm text-gray-400 mt-1">Field-level accuracy</div>
+                    <div class="text-xs text-gray-500 mt-1">Across 1,000+ extracted fields, verified by client analysts</div>
                 </div>
                 <div class="p-5 border-t-2 border-cyan-500 bg-cyan-500/5 rounded-b-lg">
-                    <div class="text-3xl font-bold"><span class="stat-number" data-target="100" data-suffix="x" data-duration="500">100x</span></div>
-                    <div class="text-sm text-gray-400 uppercase tracking-tight mt-1">Faster Than Manual</div>
+                    <div class="text-3xl font-bold">3 min</div>
+                    <div class="text-sm text-gray-400 mt-1">For a 200-page rent roll</div>
+                    <div class="text-xs text-gray-500 mt-1">vs. 2 days of manual analyst work</div>
                 </div>
             </div>
         </div>
@@ -272,7 +262,7 @@
     <!-- Founders -->
     <section id="founders" class="py-16 px-8 max-w-7xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold">Built by PE operators.</h2>
+            <h2 class="text-3xl md:text-4xl font-bold">Built from inside PE.</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -321,39 +311,48 @@
             <div class="feature-card p-7 rounded-2xl fade-in">
                 <h4 class="text-lg font-bold mb-3 flex items-center gap-3">
                     <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                     </svg>
-                    How is this different from Juniper Square or Yardi?
+                    What document types does it handle?
                 </h4>
-                <p class="text-gray-300 leading-relaxed">Juniper Square manages LPs. Yardi does accounting. <strong>Antralio is the <span class="text-white font-semibold">layer that moves data between all of them</span>—automatically.</strong></p>
+                <p class="text-gray-300 leading-relaxed">Leases, rent rolls, subscription documents, CIMs, financial statements, side letters — <span class="text-white font-semibold">any structured or semi-structured document your team processes repeatedly.</span> If it comes in as a PDF, scanned image, or spreadsheet, we can extract from it.</p>
             </div>
             <div class="feature-card p-7 rounded-2xl fade-in" style="transition-delay: 0.1s;">
                 <h4 class="text-lg font-bold mb-3 flex items-center gap-3">
                     <svg class="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                     </svg>
-                    Who has to change their behavior?
+                    Is our deal data secure?
                 </h4>
-                <p class="text-gray-300 leading-relaxed"><strong>Nobody.</strong> We plug into your existing folders and email. <span class="text-white font-semibold">Your operating partners keep working as they do—Antralio handles the rest.</span></p>
+                <p class="text-gray-300 leading-relaxed"><strong>Your data is fully isolated from other firms</strong> — never pooled, never shared. <span class="text-white font-semibold">We never use your data to train AI models.</span> We integrate with your existing SSO (Okta/SAML) for granular access control across your team and operating partners.</p>
             </div>
             <div class="feature-card p-7 rounded-2xl fade-in" style="transition-delay: 0.2s;">
                 <h4 class="text-lg font-bold mb-3 flex items-center gap-3">
                     <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    Is our proprietary deal data secure?
+                    What if the extraction gets something wrong?
                 </h4>
-                <p class="text-gray-300 leading-relaxed">
-                    <strong>Security is our baseline, not a feature.</strong> Antralio uses isolated data siloing to ensure your data is never mixed with other firms. Crucially, <span class="text-white font-semibold">we never use your data to train AI models.</span> We integrate with your existing SSO (Okta/SAML) to maintain strict, granular access control across your associates and operating partners.
-                </p>
+                <p class="text-gray-300 leading-relaxed">Every extracted value links back to its source — page number, clause, cell reference. <span class="text-white font-semibold">Your analysts verify by clicking, not by re-reading entire documents.</span></p>
             </div>
         </div>
     </section>
 
     <!-- Footer CTA -->
     <footer class="py-16 px-8 text-center border-t border-white/5">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">See the difference in your next reporting cycle.</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">See it work on your documents.</h2>
         <span id="footer-booking-btn"><a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" class="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-xl font-bold transition inline-block">Book a Demo →</a></span>
+        <div class="mt-6">
+            <form id="inline-signup" action="https://formspree.io/f/xpqdoyor" method="POST" class="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto">
+                <input type="hidden" name="action" value="start-pilot">
+                <input type="email" name="email" placeholder="Or leave your work email" required
+                       class="px-4 py-2.5 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition text-sm w-full sm:w-64">
+                <button type="submit" class="bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition whitespace-nowrap border border-gray-700">
+                    Get in Touch
+                </button>
+            </form>
+            <div id="inline-success" class="hidden mt-3 text-green-400 font-semibold text-center text-sm">✓ We'll be in touch shortly.</div>
+        </div>
         <div class="mt-12 text-gray-500 text-sm">
             &copy; 2026 Antralio, Inc. All rights reserved. |
             <a href="/terms" class="hover:text-white transition">Terms of Use</a> |
@@ -383,32 +382,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-            // Animated counter for statistics
-            const animateCounter = (element, target, suffix = '', duration = 2000) => {
-                let current = 0;
-                const increment = target / (duration / 16);
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        element.textContent = target + suffix;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.floor(current) + suffix;
-                    }
-                }, 16);
-            };
-
-            const statObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.dataset.animated) {
-                        entry.target.dataset.animated = 'true';
-                        animateCounter(entry.target, parseInt(entry.target.dataset.target), entry.target.dataset.suffix || '', parseInt(entry.target.dataset.duration) || 2000);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
         });
 
         // Google Calendar scheduling buttons
