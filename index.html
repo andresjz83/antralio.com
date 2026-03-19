@@ -43,7 +43,9 @@
         .gradient-text {
             background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
             background-size: 200% 200%;
+            /* stylelint-disable-next-line plugin/browser-compat -- fallback color set; transparent applied only inside @supports */
             -webkit-background-clip: text;
+            /* stylelint-disable-next-line plugin/browser-compat -- same as above */
             background-clip: text;
             color: var(--accent-indigo);
             animation: gradientShift 3s ease infinite;

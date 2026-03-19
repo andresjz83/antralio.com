@@ -1,0 +1,10 @@
+{
+  "plugins": ["stylelint-browser-compat"],
+  "rules": {
+    "plugin/browser-compat": [true, {
+      "allow": {
+        "prefix": true
+      }
+    }]
+  }
+}
