@@ -1,495 +1,821 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antralio | AI-Powered Data Extraction for Private Equity</title>
-    <meta name="description" content="Antralio extracts, structures, and delivers data from leases, rent rolls, CIMs, and subscription documents in minutes. Built for private equity teams.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antralio — AI-native infrastructure for private equity</title>
+  <meta name="description" content="Antralio embeds AI agents across your firm and portfolio. Extracts, reconciles, and delivers decision-ready answers in hours instead of weeks. Every figure cited back to source.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <!-- Preconnect to third-party origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://calendar.google.com">
-    <link rel="preconnect" href="https://t.contentsquare.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Contentsquare Analytics -->
-    <script src="https://t.contentsquare.net/uxa/04f4e4016f60f.js"></script>
+  <link rel="stylesheet" href="colors_and_type.css">
 
-    <!-- PostHog Analytics -->
-    <script>
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-        posthog.init('phc_qQSKJp3EebOdnJFI0vGntHjovgmCzyHU4YLnXJwnVez', {
-            api_host: 'https://d.antralio.com',
-            ui_host: 'https://us.posthog.com',
-        })
-    </script>
+  <script src="https://t.contentsquare.net/uxa/04f4e4016f60f.js"></script>
 
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://d.antralio.com">
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #171717;
-            --border-subtle: #262626;
-            --border-accent: #4f46e5;
-            --text-primary: #f9f9f9;
-            --text-secondary: #94a3b8;
-            --accent-indigo: #4f46e5;
-            --accent-cyan: #06b6d4;
-        }
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_qQSKJp3EebOdnJFI0vGntHjovgmCzyHU4YLnXJwnVez', {
+      api_host: 'https://d.antralio.com',
+      ui_host: 'https://us.posthog.com',
+    })
+  </script>
 
-        body {
-            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-        }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    img, svg { display: block; max-width: 100%; }
 
-        .gradient-text {
-            background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
-            background-size: 200% 200%;
-            /* stylelint-disable-next-line plugin/browser-compat -- fallback color set; transparent applied only inside @supports */
-            -webkit-background-clip: text;
-            /* stylelint-disable-next-line plugin/browser-compat -- same as above */
-            background-clip: text;
-            color: var(--accent-indigo);
-            animation: gradientShift 3s ease infinite;
-        }
+    .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section { padding: 104px 32px; background: var(--surface-canvas); }
+    .section-inverse { padding: 104px 32px; background: var(--surface-inverse); color: var(--surface-canvas); }
 
-        @supports (-webkit-background-clip: text) or (background-clip: text) {
-            .gradient-text {
-                -webkit-text-fill-color: transparent;
-                color: transparent;
-            }
-        }
+    /* ---------- Overline + section eyebrow ---------- */
+    .overline {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .overline.sage { color: var(--accent); }
+    .overline.sage-soft { color: #9DBAB1; }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+    }
+    .section-eyebrow .rule {
+      width: 32px; height: 1px; background: var(--accent);
+    }
+    .section-eyebrow.on-dark .rule { background: #9DBAB1; }
 
-        .feature-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            transition: all 0.3s ease;
-        }
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; font-size: 14px; font-weight: 500;
+      border-radius: 2px; border: 1px solid transparent;
+      cursor: pointer; letter-spacing: -0.005em; white-space: nowrap;
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+      font-family: inherit;
+    }
+    .btn-large { padding: 16px 28px; font-size: 15px; }
+    .btn-primary { background: var(--accent); color: var(--ink-inverse); border-color: var(--accent); }
+    .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .btn-ghost { background: transparent; color: var(--ink-primary); border-color: transparent; }
+    .btn-ghost:hover { color: var(--accent); }
+    .btn-on-dark { background: var(--surface-canvas); color: var(--ink-primary); border-color: var(--surface-canvas); }
+    .btn-on-dark:hover { background: #EFE7D4; }
+    .btn-on-dark-ghost { background: transparent; color: var(--surface-canvas); border-color: rgba(240,238,232,0.28); }
+    .btn-on-dark-ghost:hover { background: rgba(240,238,232,0.08); border-color: var(--surface-canvas); }
 
-        .feature-card:hover {
-            border-color: var(--border-accent);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px -15px rgba(79, 70, 229, 0.3);
-        }
+    /* ---------- Badge (1px bordered, uppercase, never filled) ---------- */
+    .badge {
+      display: inline-block; padding: 3px 9px; border-radius: 2px;
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: transparent; color: var(--ink-secondary);
+    }
+    .badge-sage   { color: var(--accent);  border-color: var(--accent); }
+    .badge-gold   { color: var(--accent-gold); border-color: var(--accent-gold); }
+    .badge-alert  { color: var(--danger);  border-color: var(--danger); }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+    /* ---------- Health dot ---------- */
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .dot-gold { background: var(--accent-gold); }
+    .dot-red  { background: var(--danger); }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* ---------- Citation pill ---------- */
+    .cite {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.02em;
+      padding: 2px 6px; border-radius: 2px;
+      border: 1px solid var(--accent); color: var(--accent);
+      margin-left: 8px; vertical-align: middle;
+    }
+    .cite-on-dark { border-color: rgba(157,186,177,0.35); color: #9DBAB1; }
 
-        /* Ensure content is visible if JS fails to load */
-        noscript ~ * .fade-in,
-        .no-js .fade-in {
-            opacity: 1;
-            transform: none;
-        }
+    /* ---------- Wordmark ---------- */
+    .wordmark {
+      font-family: var(--font-display);
+      font-weight: 900; font-size: 22px; letter-spacing: -0.042em; line-height: 1;
+      color: var(--ink-primary);
+    }
+    .wordmark-sm { font-size: 18px; }
+    .wordmark-on-dark { color: var(--surface-canvas); }
 
-        .hero-animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
+    /* ============================================================
+       NAV
+       ============================================================ */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--surface-canvas);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 20px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-link {
+      font-size: 14px; color: var(--ink-primary); font-weight: 500;
+      padding: 8px 4px; transition: color 120ms ease; white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--accent); }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @media (max-width: 720px) {
+      .nav-links .nav-link { display: none; }
+    }
 
-        @media (prefers-reduced-motion: reduce) {
-            .hero-animate {
-                animation: none;
-            }
-            .fade-in {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-            .gradient-text {
-                animation: none;
-            }
-        }
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero { background: var(--surface-canvas); padding: 96px 32px 80px; }
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 40px;
+    }
+    .hero-eyebrow .rule { width: 40px; height: 1px; background: var(--accent); }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8.5vw, 104px); line-height: 1.02; font-weight: 600;
+      letter-spacing: -0.04em; color: var(--ink-primary);
+      margin: 0; max-width: 1080px;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub {
+      font-size: 22px; line-height: 1.45; color: var(--ink-secondary);
+      max-width: 720px; margin: 32px 0 40px; letter-spacing: -0.005em; font-weight: 400;
+    }
+    .hero-ctas { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; flex-wrap: wrap; }
+    .hero-trust {
+      display: flex; align-items: center; gap: 24px;
+      padding-top: 28px; border-top: 1px solid var(--border-subtle);
+      font-size: 13px; color: var(--ink-muted); flex-wrap: wrap;
+    }
+    .hero-trust .divider { width: 1px; height: 16px; background: var(--border-subtle); }
 
-    </style>
-    <noscript>
-        <style>
-            .fade-in { opacity: 1 !important; transform: none !important; }
-            .hero-animate { animation: none !important; opacity: 1 !important; transform: none !important; }
-        </style>
-    </noscript>
+    /* ============================================================
+       HOW IT WORKS — before/after
+       ============================================================ */
+    .how-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: end; margin-bottom: 48px;
+    }
+    .how-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.2vw, 56px); line-height: 1.1; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--ink-primary); margin: 0; max-width: 560px;
+    }
+    .how-lead {
+      font-size: 17px; color: var(--ink-secondary); line-height: 1.55;
+      max-width: 560px; margin: 0;
+    }
+    .how-panel {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border-strong); background: var(--surface-card);
+    }
+    .how-col { padding: 32px 36px; }
+    .how-col-before { background: var(--surface-panel); border-right: 1px solid var(--border-strong); }
+    .how-col-head {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
+    }
+    .doc-list { display: flex; flex-direction: column; gap: 10px; }
+    .doc-tile {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--surface-card); border: 1px solid var(--border-subtle);
+      padding: 14px 16px;
+    }
+    .doc-tile.faded { opacity: 0.45; }
+    .doc-kind {
+      width: 40px; height: 48px; flex-shrink: 0;
+      border: 1px solid var(--ink-secondary); color: var(--ink-secondary);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+    }
+    .doc-kind.alert { border-color: var(--danger); color: var(--danger); }
+    .doc-kind.gold  { border-color: var(--accent-gold); color: var(--accent-gold); }
+    .doc-meta-name {
+      font-size: 14px; font-weight: 500; color: var(--ink-primary); letter-spacing: -0.005em;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .doc-meta-sub { font-size: 12px; color: var(--ink-muted); margin-top: 4px; line-height: 1.4; }
+    .col-footer {
+      margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-subtle);
+      font-size: 12px; color: var(--ink-secondary); line-height: 1.5;
+    }
+    .table-out { border: 1px solid var(--border-subtle); }
+    .table-head {
+      padding: 10px 14px; border-bottom: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--surface-panel);
+    }
+    .table-title { font-size: 13px; font-weight: 500; color: var(--ink-primary); letter-spacing: -0.005em; }
+    .table-status {
+      display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--ink-muted);
+      font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .row {
+      display: grid; grid-template-columns: 5fr 7fr;
+      padding: 11px 14px; border-bottom: 1px solid var(--border-subtle);
+      font-size: 13.5px;
+    }
+    .row:last-child { border-bottom: none; }
+    .row .k { color: var(--ink-secondary); }
+    .row .v { color: var(--ink-primary); font-weight: 500; display: flex; align-items: center; flex-wrap: wrap; }
+    .row .v.warn { color: var(--accent-gold); }
+
+    @media (max-width: 900px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .how-panel { grid-template-columns: 1fr; }
+      .how-col-before { border-right: none; border-bottom: 1px solid var(--border-strong); }
+    }
+
+    /* ============================================================
+       STATS — inverse
+       ============================================================ */
+    .stats-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.2vw, 56px); line-height: 1.1; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--surface-canvas); margin: 0; max-width: 900px;
+    }
+    .stats-lead {
+      font-size: 18px; color: #C9CFD8; line-height: 1.55; max-width: 640px;
+      margin: 24px 0 64px;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: rgba(157,186,177,0.22); border: 1px solid rgba(157,186,177,0.22);
+    }
+    .stat-cell { background: var(--surface-inverse); padding: 40px 40px; }
+    .stat-figure {
+      font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+      font-size: clamp(56px, 7.5vw, 96px); font-weight: 400; letter-spacing: -0.04em;
+      color: var(--surface-canvas); line-height: 1; margin: 20px 0 20px;
+    }
+    .stat-desc { font-size: 15px; color: #C9CFD8; line-height: 1.55; max-width: 360px; }
+
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       WHEREVER — three chips
+       ============================================================ */
+    .wherever-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: end; margin-bottom: 48px;
+    }
+    .wherever-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.2vw, 56px); line-height: 1.1; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--ink-primary); margin: 0; max-width: 560px;
+    }
+    .wherever-lead {
+      font-size: 17px; color: var(--ink-secondary); line-height: 1.55;
+      max-width: 560px; margin: 0;
+    }
+    .chips {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .chip {
+      background: var(--surface-card); border: 1px solid var(--border-subtle);
+      padding: 28px 28px 32px;
+    }
+    .chip-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .chip-title {
+      font-family: var(--font-display); font-size: 22px; font-weight: 600;
+      letter-spacing: -0.015em; color: var(--ink-primary); margin: 0 0 10px;
+    }
+    .chip-body { font-size: 14.5px; color: var(--ink-secondary); line-height: 1.55; margin: 0; }
+
+    @media (max-width: 900px) {
+      .wherever-grid { grid-template-columns: 1fr; }
+      .chips { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FOUNDERS
+       ============================================================ */
+    .founders-head {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: end; margin-bottom: 48px;
+    }
+    .founders-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.2vw, 56px); line-height: 1.1; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--ink-primary); margin: 0;
+    }
+    .founders-lead {
+      font-size: 17px; color: var(--ink-secondary); line-height: 1.55;
+      max-width: 520px; margin: 0;
+    }
+    .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .founder-card {
+      background: var(--surface-card); border: 1px solid var(--border-subtle);
+      padding: 40px 40px 36px; display: flex; flex-direction: column;
+    }
+    .founder-head { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
+    .monogram {
+      width: 72px; height: 72px; background: var(--surface-inverse); color: var(--surface-canvas);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: 0.02em;
+    }
+    .founder-photo {
+      width: 96px; height: 96px; flex-shrink: 0;
+      object-fit: cover; object-position: center top;
+      border: 1px solid var(--border-subtle);
+      border-radius: 0;
+      background: var(--surface-panel);
+    }
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 600; color: var(--ink-primary); letter-spacing: -0.015em;
+    }
+    .founder-role {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-top: 8px;
+    }
+    .founder-bullets { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .founder-bullets li {
+      display: flex; gap: 14px; font-size: 15px; color: var(--ink-secondary); line-height: 1.55;
+    }
+    .founder-bullets li::before {
+      content: ""; flex-shrink: 0;
+      width: 8px; height: 1px; background: var(--accent);
+      margin-top: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .founders-head { grid-template-columns: 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    .faq-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.2vw, 56px); line-height: 1.1; font-weight: 600;
+      letter-spacing: -0.025em; color: var(--ink-primary); margin: 0 0 56px;
+    }
+    .faq-list { border-bottom: 1px solid var(--border-subtle); }
+    .faq-row { border-top: 1px solid var(--border-subtle); }
+    .faq-q {
+      width: 100%; background: transparent; border: none; cursor: pointer;
+      padding: 28px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      text-align: left; color: var(--ink-primary); font-family: inherit;
+    }
+    .faq-q-text {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 500; letter-spacing: -0.015em;
+    }
+    .faq-q-toggle {
+      width: 28px; height: 28px; border: 1px solid var(--border-strong); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 14px; color: var(--ink-primary);
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+      flex-shrink: 0;
+    }
+    .faq-row[aria-expanded="true"] .faq-q-toggle {
+      background: var(--ink-primary); color: var(--surface-canvas); border-color: var(--ink-primary);
+    }
+    .faq-a {
+      display: none; padding-bottom: 28px;
+      font-size: 16px; color: var(--ink-secondary); line-height: 1.65; max-width: 780px;
+    }
+    .faq-row[aria-expanded="true"] .faq-a { display: block; }
+
+    /* ============================================================
+       FOOTER CTA
+       ============================================================ */
+    .cta-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end;
+    }
+    .cta-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6.5vw, 76px); line-height: 1.05; font-weight: 600;
+      letter-spacing: -0.035em; color: var(--surface-canvas); margin: 0;
+    }
+    .cta-body { font-size: 17px; color: #C9CFD8; line-height: 1.55; margin: 0 0 28px; max-width: 440px; }
+    .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--surface-inverse); color: #8A95A8;
+      padding: 40px 32px; border-top: 1px solid rgba(157,186,177,0.18);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 20px; }
+    .footer-copy { font-size: 13px; }
+    .footer-links { display: flex; align-items: center; gap: 24px; font-size: 13px; }
+    .footer-links a { color: #C9CFD8; }
+    .footer-links a:hover { color: var(--surface-canvas); }
+
+    /* ============================================================
+       Mobile spacing tweaks
+       ============================================================ */
+    @media (max-width: 720px) {
+      .section, .section-inverse { padding: 72px 24px; }
+      .hero { padding: 64px 24px 56px; }
+      .hero-sub { font-size: 18px; margin: 24px 0 32px; }
+      .container, .nav-inner, .hero-inner, .footer-inner { padding-left: 24px; padding-right: 24px; }
+      .stat-cell { padding: 32px 28px; }
+      .founder-card { padding: 28px 28px 24px; }
+      .how-col { padding: 24px 24px; }
+    }
+  </style>
 </head>
-<body class="antialiased">
+<body>
+  <!-- ============================================================ NAV ============================================================ -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="#top" aria-label="Antralio home"><span class="wordmark">ANTRALIO</span></a>
+      <div class="nav-links">
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="#wherever" class="nav-link">Where it runs</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a demo</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Nav -->
-    <nav class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto relative">
-        <div class="text-2xl font-bold tracking-tighter">ANTRALIO</div>
-        <div class="space-x-8 hidden md:block text-sm font-medium text-gray-400">
-            <a href="#how-it-works" class="hover:text-white transition">How it Works</a>
-            <a href="#founders" class="hover:text-white transition">Leadership</a>
-            <a href="#faq" class="hover:text-white transition">FAQ</a>
+  <main>
+    <!-- ============================================================ HERO ============================================================ -->
+    <header id="top" class="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <div class="rule"></div>
+          <span class="overline sage">AI-native infrastructure for private equity</span>
         </div>
-        <!-- Mobile hamburger -->
-        <button onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false" id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white">
-            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        <a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" class="hidden md:block bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-lg text-sm font-semibold transition text-white no-underline">Book a Demo</a>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#171717] border-b border-gray-800 px-8 py-6 space-y-4 md:hidden z-50">
-            <a href="#how-it-works" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-white transition">How it Works</a>
-            <a href="#founders" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-white transition">Leadership</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-white transition">FAQ</a>
-            <a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" onclick="toggleMobileMenu()" class="block w-full bg-indigo-600 hover:bg-indigo-700 px-5 py-3 rounded-lg text-sm font-semibold transition mt-2 text-center">Book a Demo</a>
-        </div>
-    </nav>
 
-    <main>
-    <!-- Hero -->
-    <header class="max-w-6xl mx-auto text-center pt-16 pb-12 px-4">
-        <h1 class="text-5xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-none hero-animate">
-            Stop Chasing Data.<br>
-            <span class="gradient-text">Close Faster.</span>
+        <h1>
+          Read answers.<br>
+          <span class="accent">Not documents.</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed hero-animate" style="animation-delay: 0.2s;">
-            Your team spends 80% of their time gathering data.
-            Antralio <span class="text-white border-b border-indigo-500">extracts, structures, and delivers it in minutes</span>.
+        <p class="hero-sub">
+          Your best people spend 80% of their time gathering data instead of making decisions. Antralio embeds AI agents across your firm and portfolio &mdash; extracting, reconciling, and delivering decision-ready answers in hours, not weeks. Every figure cited back to the source.
         </p>
 
-        <div class="hero-animate" style="animation-delay: 0.3s;">
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
-                <span id="hero-booking-btn"><a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" class="inline-block bg-white text-black px-10 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]">Book a Demo</a></span>
-            </div>
-            <p class="text-gray-400 text-sm">15 minutes · See it work on a live document</p>
+        <div class="hero-ctas">
+          <a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Book a demo &rarr;</a>
+          <a href="#how-it-works" class="btn btn-ghost btn-large">See how it works</a>
         </div>
+
+        <div class="hero-trust">
+          <span>SSO / SAML</span>
+          <span class="divider"></span>
+          <span>Data isolated per firm</span>
+          <span class="divider"></span>
+          <span>Never used to train models</span>
+          <span class="divider"></span>
+          <span><span class="mono" style="color: var(--ink-primary);">15-minute</span> demo on your own document</span>
+        </div>
+      </div>
     </header>
 
-    <!-- Before/After Product Demo — right after hero -->
-    <section id="how-it-works" class="pt-12 pb-16 px-8 max-w-5xl mx-auto">
-        <div class="text-center mb-12">
-            <p class="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">How It Works</p>
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">Documents in. Clean data out.</h2>
-            <p class="text-gray-300 text-lg max-w-2xl mx-auto">AI that reads your leases, rent rolls, CIMs, and subscription documents the way your best analyst would. Every extracted number traces back to its source.</p>
+    <!-- ============================================================ HOW IT WORKS ============================================================ -->
+    <section id="how-it-works" class="section">
+      <div class="container">
+        <div class="section-eyebrow">
+          <div class="rule"></div>
+          <span class="overline sage">How it works</span>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-0 items-stretch">
-            <!-- BEFORE: messy inputs -->
-            <div class="feature-card rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none p-6 md:p-8 fade-in md:-mr-px md:z-10 md:hover:z-20">
-                <div class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">What goes in</div>
-                <div class="space-y-3">
-                    <div class="bg-black/40 border border-gray-700 rounded-lg p-3 md:p-4 flex items-start gap-3">
-                        <div class="w-8 h-10 bg-red-500/20 border border-red-500/40 rounded flex items-center justify-center text-xs text-red-400 font-bold flex-shrink-0">PDF</div>
-                        <div>
-                            <div class="text-sm font-medium">Lease_Unit_4A_Amended_v3_FINAL.pdf</div>
-                            <div class="text-xs text-gray-400 mt-1">47 pages · Scanned · Some handwritten amendments</div>
-                        </div>
-                    </div>
-                    <div class="bg-black/40 border border-gray-700 rounded-lg p-3 md:p-4 flex items-start gap-3">
-                        <div class="w-8 h-10 bg-red-500/20 border border-red-500/40 rounded flex items-center justify-center text-xs text-red-400 font-bold flex-shrink-0">PDF</div>
-                        <div>
-                            <div class="text-sm font-medium">Rent_Review_Memo_2024.pdf</div>
-                            <div class="text-xs text-gray-400 mt-1">3 pages · Supersedes clause 4.2</div>
-                        </div>
-                    </div>
-                    <div class="bg-black/40 border border-gray-700 rounded-lg p-3 md:p-4 flex items-start gap-3">
-                        <div class="w-8 h-10 bg-green-500/20 border border-green-500/40 rounded flex items-center justify-center text-xs text-green-400 font-bold flex-shrink-0">XLS</div>
-                        <div>
-                            <div class="text-sm font-medium">Supplementary_Schedule.xlsx</div>
-                            <div class="text-xs text-gray-400 mt-1">Operating partner's version · Last updated "sometime in Q3"</div>
-                        </div>
-                    </div>
-                    <div class="bg-black/40 border border-gray-700 rounded-lg p-3 md:p-4 flex items-start gap-3 opacity-50">
-                        <div class="w-8 h-10 bg-red-500/20 border border-red-500/40 rounded flex items-center justify-center text-xs text-red-400 font-bold flex-shrink-0">PDF</div>
-                        <div>
-                            <div class="text-sm font-medium">Side_Letter_Amendment.pdf</div>
-                            <div class="text-xs text-gray-400 mt-1">1 page · "Did anyone know about this?"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AFTER: clean output -->
-            <div class="feature-card rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none p-6 md:p-8 fade-in md:hover:z-20" style="transition-delay: 0.15s;">
-                <div class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">What comes out</div>
-                <div class="bg-black/40 border border-gray-700 rounded-lg overflow-hidden">
-                    <div class="bg-indigo-500/10 border-b border-gray-700 px-4 py-2 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-indigo-300">Tenancy Schedule — Unit 4A</span>
-                        <span class="text-xs px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full">Verified</span>
-                    </div>
-                    <div class="divide-y divide-gray-800 text-sm">
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">Tenant</span>
-                            <span class="font-medium">Meridian Retail Ltd
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ p.1</span>
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">Passing Rent</span>
-                            <span class="font-medium">£142,500 pa
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ p.12</span>
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">Lease Start</span>
-                            <span class="font-medium">15 Mar 2019
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ p.3</span>
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">Lease Expiry</span>
-                            <span class="font-medium">14 Mar 2029
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ p.3</span>
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">Break Option</span>
-                            <span class="font-medium text-yellow-400">14 Mar 2026
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ p.8, cl.4.2</span>
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">Next Review</span>
-                            <span class="font-medium">15 Mar 2027
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ Memo p.2</span>
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-[5fr,7fr] px-4 py-2.5">
-                            <span class="text-gray-400">WAULT</span>
-                            <span class="font-medium">3.0 yrs
-                                <span class="ml-1.5 text-[11px] text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">↗ calculated</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4 flex items-center gap-2 text-xs text-gray-400">
-                    <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    Every value is cited. Click any to see the source document.
-                </div>
-            </div>
+        <div class="how-grid">
+          <h2 class="how-h2">Documents in.<br>Clean data out.</h2>
+          <p class="how-lead">
+            Antralio agents read leases, rent rolls, CIMs, sub docs, capital calls, board packs, and accounting exports &mdash; the way your best analyst would, at the speed and volume only software can. Every extracted figure traces back to its source: a page, a clause, a cell.
+          </p>
         </div>
+
+        <div class="how-panel">
+          <!-- BEFORE -->
+          <div class="how-col how-col-before">
+            <div class="how-col-head">
+              <span class="overline">What goes in</span>
+              <span class="badge badge-alert">Manual &middot; 2 days</span>
+            </div>
+            <div class="doc-list">
+              <div class="doc-tile">
+                <div class="doc-kind alert">PDF</div>
+                <div style="min-width:0; flex:1;">
+                  <div class="doc-meta-name">Lease_Unit_4A_Amended_v3_FINAL.pdf</div>
+                  <div class="doc-meta-sub">47 pp &middot; scanned &middot; handwritten amendments</div>
+                </div>
+              </div>
+              <div class="doc-tile">
+                <div class="doc-kind alert">PDF</div>
+                <div style="min-width:0; flex:1;">
+                  <div class="doc-meta-name">Rent_Review_Memo_2024.pdf</div>
+                  <div class="doc-meta-sub">3 pp &middot; supersedes clause 4.2</div>
+                </div>
+              </div>
+              <div class="doc-tile">
+                <div class="doc-kind gold">XLS</div>
+                <div style="min-width:0; flex:1;">
+                  <div class="doc-meta-name">Supplementary_Schedule.xlsx</div>
+                  <div class="doc-meta-sub">Operating partner&rsquo;s version &middot; last updated &ldquo;Q3 sometime&rdquo;</div>
+                </div>
+              </div>
+              <div class="doc-tile faded">
+                <div class="doc-kind alert">PDF</div>
+                <div style="min-width:0; flex:1;">
+                  <div class="doc-meta-name">Side_Letter_Amendment.pdf</div>
+                  <div class="doc-meta-sub">1 p &middot; &ldquo;did anyone know about this?&rdquo;</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-footer">
+              An analyst would have to open each of these, reconcile the amendment against the original lease, and hand-enter the result into a model.
+            </div>
+          </div>
+
+          <!-- AFTER -->
+          <div class="how-col">
+            <div class="how-col-head">
+              <span class="overline">What comes out</span>
+              <span class="badge badge-sage">Verified &middot; 3 min</span>
+            </div>
+            <div class="table-out">
+              <div class="table-head">
+                <span class="table-title">Tenancy Schedule &mdash; Unit 4A</span>
+                <span class="table-status"><span class="dot"></span> Verified</span>
+              </div>
+              <div class="row"><span class="k">Tenant</span><span class="v">Meridian Retail Ltd<span class="cite">&uarr; p.1</span></span></div>
+              <div class="row"><span class="k">Passing rent</span><span class="v"><span class="mono">£142,500</span>&nbsp;pa<span class="cite">&uarr; p.12</span></span></div>
+              <div class="row"><span class="k">Lease start</span><span class="v"><span class="mono">15 Mar 2019</span><span class="cite">&uarr; p.3</span></span></div>
+              <div class="row"><span class="k">Lease expiry</span><span class="v"><span class="mono">14 Mar 2029</span><span class="cite">&uarr; p.3</span></span></div>
+              <div class="row"><span class="k">Break option</span><span class="v warn"><span class="mono">14 Mar 2026</span><span class="cite">&uarr; p.8, cl.4.2</span></span></div>
+              <div class="row"><span class="k">Next review</span><span class="v"><span class="mono">15 Mar 2027</span><span class="cite">&uarr; Memo p.2</span></span></div>
+              <div class="row"><span class="k">WAULT</span><span class="v"><span class="mono">3.0</span>&nbsp;yrs<span class="cite">&uarr; calculated</span></span></div>
+            </div>
+            <div class="col-footer" style="display:flex; align-items:center; gap:8px;">
+              <span class="dot"></span>
+              Every value is cited. Click any row to open the underlying page.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Stats + Value Prop -->
-    <section class="py-16 px-8 bg-[#171717]">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Get your analysts back to deal work.</h2>
-            <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
-                Data enters once and flows everywhere — into your models, your reports, your portfolio monitoring. <strong class="text-white">Your team goes back to sourcing deals and managing assets.</strong>
+    <!-- ============================================================ STATS ============================================================ -->
+    <section class="section-inverse">
+      <div class="container">
+        <div class="section-eyebrow on-dark">
+          <div class="rule"></div>
+          <span class="overline sage-soft">The outcome</span>
+        </div>
+
+        <h2 class="stats-h2">Get your analysts back to deal work.</h2>
+        <p class="stats-lead">
+          Data enters once and flows everywhere &mdash; into your models, your reports, your portfolio monitoring. Your team goes back to sourcing deals and managing assets.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-cell">
+            <span class="overline sage-soft">Field-level accuracy</span>
+            <div class="stat-figure">98%</div>
+            <p class="stat-desc">Across thousands of extracted fields, verified by client analysts. Catches the data-quality errors a tired human misses on page 38.</p>
+          </div>
+          <div class="stat-cell">
+            <span class="overline sage-soft">For a 200-page rent roll</span>
+            <div class="stat-figure">3 min</div>
+            <p class="stat-desc">vs. two days of manual analyst work. Same output, same citations &mdash; you read the answer, not the document.</p>
+          </div>
+          <div class="stat-cell">
+            <span class="overline sage-soft">Always on</span>
+            <div class="stat-figure">24/7</div>
+            <p class="stat-desc">The agent doesn&rsquo;t sleep, doesn&rsquo;t context-switch, doesn&rsquo;t take Q4 off. Capacity scales with the data, not your headcount.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ WHEREVER THE WORK HAPPENS ============================================================ -->
+    <section id="wherever" class="section">
+      <div class="container">
+        <div class="section-eyebrow">
+          <div class="rule"></div>
+          <span class="overline sage">Where it runs</span>
+        </div>
+
+        <div class="wherever-grid">
+          <h2 class="wherever-h2">Wherever the work happens.</h2>
+          <p class="wherever-lead">
+            Run Antralio across your firm &mdash; deal pipeline, IC memos, monitoring, LP reporting &mdash; and inside your portfolio companies on the workflows you care most about. When agents run on both sides, reporting and data requests stop being PDF exchanges.
+          </p>
+        </div>
+
+        <div class="chips">
+          <div class="chip">
+            <div class="chip-label">Across the firm</div>
+            <h3 class="chip-title">Deal teams &amp; investment ops</h3>
+            <p class="chip-body">
+              Sourcing pipelines, underwriting, IC memos, portfolio monitoring, LP reporting. The agent does the gathering and reconciliation. Your senior people make the decisions.
             </p>
-            <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
-                <div class="p-5 border-t-2 border-indigo-500 bg-indigo-500/5 rounded-b-lg">
-                    <div class="text-3xl font-bold">98%</div>
-                    <div class="text-sm text-gray-400 mt-1">Field-level accuracy</div>
-                    <div class="text-xs text-gray-400 mt-1">Across 1,000+ extracted fields, verified by client analysts</div>
-                </div>
-                <div class="p-5 border-t-2 border-cyan-500 bg-cyan-500/5 rounded-b-lg">
-                    <div class="text-3xl font-bold">3 min</div>
-                    <div class="text-sm text-gray-400 mt-1">For a 200-page rent roll</div>
-                    <div class="text-xs text-gray-400 mt-1">vs. 2 days of manual analyst work</div>
-                </div>
-            </div>
+          </div>
+          <div class="chip">
+            <div class="chip-label">Inside the portcos</div>
+            <h3 class="chip-title">Operating workflows</h3>
+            <p class="chip-body">
+              Lease management, vendor reconciliation, monthly close, broker triage, board-pack preparation. The same agents your fund uses, working on the workflows your fund cares about.
+            </p>
+          </div>
+          <div class="chip">
+            <div class="chip-label">Across the boundary</div>
+            <h3 class="chip-title">GP &harr; portco data flow</h3>
+            <p class="chip-body">
+              When both sides run Antralio, requests and responses move agent-to-agent. No more chasing the operating partner for the spreadsheet that was due on Tuesday.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Founders -->
-    <section id="founders" class="py-16 px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold">Built from inside PE.</h2>
+    <!-- ============================================================ FOUNDERS ============================================================ -->
+    <section id="team" class="section">
+      <div class="container">
+        <div class="section-eyebrow">
+          <div class="rule"></div>
+          <span class="overline sage">Team</span>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <div class="feature-card p-8 rounded-2xl fade-in">
-                <div class="flex flex-col items-center mb-6">
-                    <img src="images/andres-jimenez.jpg" alt="Andrés Jimenez Zorrilla" width="128" height="128" loading="lazy" class="w-32 h-32 rounded-full mb-4 object-cover border-2 border-indigo-500/30">
-                    <h3 class="text-2xl font-bold text-center">Andrés Jimenez Zorrilla</h3>
-                    <p class="text-indigo-400 text-sm font-semibold uppercase tracking-wider text-center">CEO</p>
-                </div>
-                <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-                    <li class="flex gap-3">
-                        <span class="text-indigo-400 flex-shrink-0">●</span>
-                        <span><strong>Morgan Stanley → QIA → Aermont Capital.</strong> Analyst to Country Lead.</span>
-                    </li>
-                    <li class="flex gap-3">
-                        <span class="text-indigo-400 flex-shrink-0">●</span>
-                        <span><strong>$1B+</strong> in equity deployed across European PE.</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="feature-card p-8 rounded-2xl fade-in" style="transition-delay: 0.1s;">
-                <div class="flex flex-col items-center mb-6">
-                    <img src="images/jonah-weissman.jpg" alt="Jonah Weissman" width="128" height="128" loading="lazy" class="w-32 h-32 rounded-full mb-4 object-cover border-2 border-cyan-500/30">
-                    <h3 class="text-2xl font-bold text-center">Jonah Weissman</h3>
-                    <p class="text-cyan-400 text-sm font-semibold uppercase tracking-wider text-center">CTO</p>
-                </div>
-                <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-                    <li class="flex gap-3">
-                        <span class="text-cyan-400 flex-shrink-0">●</span>
-                        <span><strong>10 years</strong> building automation tools, including 3 at <strong>AWS</strong>.</span>
-                    </li>
-                    <li class="flex gap-3">
-                        <span class="text-cyan-400 flex-shrink-0">●</span>
-                        <span>Specialist in AI-driven extraction from complex industry documents.</span>
-                    </li>
-                </ul>
-            </div>
+        <div class="founders-head">
+          <h2 class="founders-h2">Built from inside PE.</h2>
+          <p class="founders-lead">
+            We built Antralio because we spent a decade doing this work by hand. The product reflects how a pension-fund analyst actually thinks.
+          </p>
         </div>
+
+        <div class="founders-grid">
+          <article class="founder-card">
+            <div class="founder-head">
+              <img class="founder-photo" src="images/andres-jimenez.jpg" alt="Andr&eacute;s Jim&eacute;nez Zorrilla" width="96" height="96" loading="lazy">
+              <div>
+                <div class="founder-name">Andr&eacute;s Jim&eacute;nez Zorrilla</div>
+                <div class="founder-role">CEO</div>
+              </div>
+            </div>
+            <ul class="founder-bullets">
+              <li><span><strong>4&times; Founder.</strong></span></li>
+              <li><span>Morgan Stanley &rarr; QIA &rarr; <strong>Aermont Capital</strong>.</span></li>
+              <li><span><span class="mono">$1B+</span> in equity deployed across European PE.</span></li>
+              <li><span>15 years as the operator this product is built for.</span></li>
+            </ul>
+          </article>
+
+          <article class="founder-card">
+            <div class="founder-head">
+              <img class="founder-photo" src="images/jonah-weissman.jpg" alt="Jonah Weissman" width="96" height="96" loading="lazy">
+              <div>
+                <div class="founder-name">Jonah Weissman</div>
+                <div class="founder-role">CTO</div>
+              </div>
+            </div>
+            <ul class="founder-bullets">
+              <li><span><span class="mono">10 yrs</span> building automation tools, including <strong>3 at AWS</strong>.</span></li>
+              <li><span>Specialist in AI-driven extraction from complex industry documents.</span></li>
+              <li><span>Technical lead on every customer deployment.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-16 px-8 max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
-        <div class="space-y-5">
-            <div class="feature-card p-7 rounded-2xl fade-in">
-                <h3 class="text-lg font-bold mb-3 flex items-center gap-3">
-                    <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                    </svg>
-                    What document types does it handle?
-                </h3>
-                <p class="text-gray-300 leading-relaxed">Leases, rent rolls, subscription documents, CIMs, financial statements, side letters — <span class="text-white font-semibold">any structured or semi-structured document your team processes repeatedly.</span> If it comes in as a PDF, scanned image, or spreadsheet, we can extract from it.</p>
-            </div>
-            <div class="feature-card p-7 rounded-2xl fade-in" style="transition-delay: 0.1s;">
-                <h3 class="text-lg font-bold mb-3 flex items-center gap-3">
-                    <svg class="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                    Is our deal data secure?
-                </h3>
-                <p class="text-gray-300 leading-relaxed"><strong>Your data is fully isolated from other firms</strong> — never pooled, never shared. <span class="text-white font-semibold">We never use your data to train AI models.</span> We integrate with your existing SSO (Okta/SAML) for granular access control across your team and operating partners.</p>
-            </div>
-            <div class="feature-card p-7 rounded-2xl fade-in" style="transition-delay: 0.2s;">
-                <h3 class="text-lg font-bold mb-3 flex items-center gap-3">
-                    <svg class="w-5 h-5 text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    What if the extraction gets something wrong?
-                </h3>
-                <p class="text-gray-300 leading-relaxed">Every extracted value links back to its source — page number, clause, cell reference. <span class="text-white font-semibold">Your analysts verify by clicking, not by re-reading entire documents.</span></p>
-            </div>
+    <!-- ============================================================ FAQ ============================================================ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-eyebrow">
+          <div class="rule"></div>
+          <span class="overline sage">Questions</span>
         </div>
+
+        <h2 class="faq-h2">What teams ask before their pilot.</h2>
+
+        <div class="faq-list">
+          <div class="faq-row" aria-expanded="true">
+            <button class="faq-q" type="button" aria-controls="faq-a-1">
+              <span class="faq-q-text">What document types does it handle?</span>
+              <span class="faq-q-toggle" aria-hidden="true"></span>
+            </button>
+            <div id="faq-a-1" class="faq-a">
+              Leases, rent rolls, CIMs, subscription documents, capital calls, side letters, board packs, accounting exports, broker pitches &mdash; any structured or semi-structured document or system your team processes repeatedly. PDFs and scans, spreadsheets, and direct connections to accounting and CRM systems.
+            </div>
+          </div>
+          <div class="faq-row" aria-expanded="false">
+            <button class="faq-q" type="button" aria-controls="faq-a-2">
+              <span class="faq-q-text">Is our deal data secure?</span>
+              <span class="faq-q-toggle" aria-hidden="true"></span>
+            </button>
+            <div id="faq-a-2" class="faq-a">
+              Your data is fully isolated from other firms &mdash; never pooled, never shared. We never use your data to train AI models. We integrate with your existing SSO (Okta / SAML) for granular access control across your team and operating partners.
+            </div>
+          </div>
+          <div class="faq-row" aria-expanded="false">
+            <button class="faq-q" type="button" aria-controls="faq-a-3">
+              <span class="faq-q-text">What if the extraction gets something wrong?</span>
+              <span class="faq-q-toggle" aria-hidden="true"></span>
+            </button>
+            <div id="faq-a-3" class="faq-a">
+              Every extracted value links back to its source &mdash; page number, clause, cell reference. Your analysts verify by clicking, not by re-reading entire documents. Disagreement on any field is logged and used to tune the extraction without retraining on your data.
+            </div>
+          </div>
+          <div class="faq-row" aria-expanded="false">
+            <button class="faq-q" type="button" aria-controls="faq-a-4">
+              <span class="faq-q-text">How does pricing work?</span>
+              <span class="faq-q-toggle" aria-hidden="true"></span>
+            </button>
+            <div id="faq-a-4" class="faq-a">
+              We price per deployment &mdash; flat annual fee, no per-document metering, no per-seat charges. A 6-week paid pilot precedes every engagement so both sides can walk away if the accuracy bar isn&rsquo;t met.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    </main>
-
-    <!-- Footer CTA -->
-    <footer class="py-16 px-8 text-center border-t border-white/5">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">See it work on your documents.</h2>
-        <span id="footer-booking-btn"><a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener" class="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-xl font-bold transition inline-block">Book a Demo →</a></span>
-        <div class="mt-6">
-            <form id="inline-signup" action="https://formspree.io/f/xpqdoyor" method="POST" class="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto">
-                <input type="hidden" name="action" value="start-pilot">
-                <input type="email" name="email" placeholder="Or leave your work email" required
-                       class="px-4 py-2.5 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition text-sm w-full sm:w-64">
-                <button type="submit" class="bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition whitespace-nowrap border border-gray-700">
-                    Get in Touch
-                </button>
-            </form>
-            <div id="inline-success" class="hidden mt-3 text-green-400 font-semibold text-center text-sm">✓ We'll be in touch shortly.</div>
+    <!-- ============================================================ FOOTER CTA ============================================================ -->
+    <section class="section-inverse" style="padding-bottom: 80px;">
+      <div class="container">
+        <div class="section-eyebrow on-dark">
+          <div class="rule"></div>
+          <span class="overline sage-soft">Next step</span>
         </div>
-        <div class="mt-12 text-gray-400 text-sm">
-            &copy; 2026 Antralio, Inc. All rights reserved. |
-            <a href="/terms" class="hover:text-white transition">Terms of Use</a> |
-            <a href="/privacy" class="hover:text-white transition">Privacy Policy</a>
+        <div class="cta-grid">
+          <h2 class="cta-h2">See it work on your own documents.</h2>
+          <div>
+            <p class="cta-body">
+              Fifteen minutes. One live lease or rent roll of your choosing. You leave with the extracted schedule whether you sign or not.
+            </p>
+            <div class="cta-buttons">
+              <a href="https://calendar.app.google/DVaERaVpDSvkHiNPA" target="_blank" rel="noopener noreferrer" class="btn btn-on-dark btn-large">Book a demo &rarr;</a>
+              <a href="mailto:team@antralio.com" class="btn btn-on-dark-ghost btn-large">team@antralio.com</a>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
+  <!-- ============================================================ FOOTER ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="wordmark wordmark-sm wordmark-on-dark">ANTRALIO</span>
+        <span class="footer-copy">&copy; 2026 Antralio, Inc.</span>
+      </div>
+      <div class="footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:team@antralio.com">team@antralio.com</a>
+      </div>
+    </div>
+  </footer>
 
-
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            const btn = document.getElementById('mobile-menu-btn');
-            const isOpen = !menu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-            btn.setAttribute('aria-expanded', isOpen);
-        }
-
-        // Scroll-triggered fade-in animations
-        document.addEventListener('DOMContentLoaded', () => {
-            var fadeEls = document.querySelectorAll('.fade-in');
-            if ('IntersectionObserver' in window) {
-                var observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) entry.target.classList.add('visible');
-                    });
-                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-                fadeEls.forEach(function(el) { observer.observe(el); });
-            } else {
-                // Fallback: show everything immediately
-                fadeEls.forEach(function(el) { el.classList.add('visible'); });
-            }
+  <script>
+    // FAQ disclosure — one open at a time, default first open.
+    (function () {
+      const rows = document.querySelectorAll('.faq-row');
+      rows.forEach((row) => {
+        const btn = row.querySelector('.faq-q');
+        const toggle = row.querySelector('.faq-q-toggle');
+        const setSign = () => {
+          toggle.textContent = row.getAttribute('aria-expanded') === 'true' ? '−' : '+';
+        };
+        setSign();
+        btn.addEventListener('click', () => {
+          const isOpen = row.getAttribute('aria-expanded') === 'true';
+          rows.forEach((r) => {
+            r.setAttribute('aria-expanded', 'false');
+            const t = r.querySelector('.faq-q-toggle');
+            if (t) t.textContent = '+';
+          });
+          if (!isOpen) {
+            row.setAttribute('aria-expanded', 'true');
+            toggle.textContent = '−';
+          }
         });
-
-        // Google Calendar scheduling buttons
-        window.addEventListener('load', function() {
-            var schedulingUrl = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0koc6Vwhllvqe9A2tGfSq10v9W4kia-HKATkCNCBLR1UMIMBoW2eE8dyQmoS0c4nvvvBxsZPoP?gv=true';
-            var targets = [
-                document.getElementById('hero-booking-btn'),
-                document.getElementById('footer-booking-btn')
-            ];
-            targets.forEach(function(target) {
-                if (target && typeof calendar !== 'undefined' && calendar && calendar.schedulingButton) {
-                    target.innerHTML = '';
-                    calendar.schedulingButton.load({
-                        url: schedulingUrl,
-                        color: '#4f46e5',
-                        label: 'Book a demo call',
-                        target: target,
-                    });
-                    // Track clicks on the scheduling button (iframe is invisible to autocapture)
-                    target.addEventListener('click', function() {
-                        posthog.capture('booking_button_clicked', { location: target.id === 'hero-booking-btn' ? 'hero' : 'footer' });
-                    });
-                }
-            });
-        });
-
-        document.getElementById('inline-signup').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            try {
-                const response = await fetch(form.getAttribute('action'), {
-                    method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
-                });
-                if (response.ok) {
-                    posthog.capture('email_submitted', { email: form.querySelector('input[name="email"]').value });
-                    form.classList.add('hidden');
-                    document.getElementById('inline-success').classList.remove('hidden');
-                } else {
-                    alert('There was a problem. Please try again or email us at team@antralio.com');
-                    submitBtn.textContent = 'Start Your Pilot';
-                    submitBtn.disabled = false;
-                }
-            } catch (error) {
-                alert('There was a problem. Please try again or email us at team@antralio.com');
-                submitBtn.textContent = 'Start Your Pilot';
-                submitBtn.disabled = false;
-            }
-        });
-    </script>
-
+      });
+    })();
+  </script>
 </body>
 </html>

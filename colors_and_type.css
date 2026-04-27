@@ -1,0 +1,251 @@
+/* ============================================================
+   Antralio Design System — Colors & Type
+   v0.1.0-alpha · 2026-04-24
+   Synthesized from DESIGN.md. Load this file before any
+   Antralio surface stylesheet.
+   ============================================================ */
+
+/* DM Sans + DM Mono via Google Fonts.
+   For self-host, see fonts/README.md (substitution flag). */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* ---------- Surfaces ---------- */
+  --surface-canvas:       #F0EEE8;  /* warm off-white, primary background */
+  --surface-card:         #FFFFFF;  /* raised surfaces on canvas */
+  --surface-panel:        #FAF8F2;  /* secondary panels, row hover */
+  --surface-inverse:      #272D45;  /* deep navy hero/footer */
+  --surface-inverse-soft: #3A4160;  /* lighter navy for inverse contrast */
+
+  /* ---------- Ink ---------- */
+  --ink-primary:   #17223B;  /* body text on light surfaces */
+  --ink-secondary: #4A5568;  /* supporting copy */
+  --ink-muted:     #8A95A8;  /* metadata, captions */
+  --ink-inverse:   #F0EEE8;  /* cream on dark backgrounds */
+
+  /* ---------- Accent ---------- */
+  --accent:           #437066;  /* sage — the only brand accent */
+  --accent-dark:      #2F5049;  /* sage hover / pressed */
+  --accent-gold:      #B8944D;  /* rare emphasis, recognition */
+
+  /* ---------- Semantic (collapsed; reuse, don't expand) ---------- */
+  --danger:  #A8323B;  /* burgundy, NEVER bright red */
+  --warning: #B8944D;  /* reuse gold */
+  --success: #437066;  /* reuse sage — never bright green */
+  --info:    #17223B;  /* reuse ink-primary, not blue */
+
+  /* ---------- Borders ---------- */
+  --border-subtle: #E5E1D8;  /* warm grey hairlines */
+  --border-strong: #272D45;  /* navy section / table top rules */
+  --border-focus:  #437066;  /* sage focus ring */
+
+  /* ---------- Spacing ---------- */
+  --space-1: 4px;
+  --space-2: 8px;   /* base unit */
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px; /* marketing section padding desktop */
+
+  --section-padding-desktop: 96px;
+  --section-padding-mobile:  48px;
+  --card-padding: 24px;
+
+  /* Data-surface density */
+  --table-row-height: 36px;
+  --table-cell-pad-x: 12px;
+  --table-cell-pad-y: 8px;
+
+  /* ---------- Radii ---------- */
+  --radius-sharp: 0;
+  --radius-soft:  2px;   /* buttons, inputs */
+  --radius-card:  4px;   /* cards, max */
+  --radius-pill:  9999px;/* numeric badges / status dots ONLY */
+
+  /* ---------- Shadows (flat by default) ---------- */
+  --shadow-none:   none;
+  --shadow-subtle: 0 1px 2px 0 rgba(23, 34, 59, 0.04),
+                   0 1px 3px 0 rgba(23, 34, 59, 0.06);
+  --shadow-raised: 0 4px 12px -2px rgba(23, 34, 59, 0.08);
+
+  /* ---------- Type stack ---------- */
+  --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---------- Type scale (size / line-height / weight / tracking) ---------- */
+  --display-size: 56px;     --display-line: 1.1;   --display-weight: 600; --display-track: -0.02em;
+  --h1-size: 40px;          --h1-line: 1.15;       --h1-weight: 600;     --h1-track: -0.015em;
+  --h2-size: 28px;          --h2-line: 1.25;       --h2-weight: 600;     --h2-track: -0.01em;
+  --h3-size: 20px;          --h3-line: 1.35;       --h3-weight: 600;     --h3-track: 0;
+  --body-lg-size: 18px;     --body-lg-line: 1.55;
+  --body-size: 16px;        --body-line: 1.55;
+  --body-sm-size: 14px;     --body-sm-line: 1.5;
+  --caption-size: 13px;     --caption-line: 1.45;
+  --overline-size: 11px;    --overline-line: 1.4;  --overline-weight: 550; --overline-track: 0.08em;
+  --table-header-size: 11px;--table-header-track: 0.06em; --table-header-weight: 550;
+  --stat-size: 40px;        --stat-line: 1;        --stat-weight: 700;     --stat-track: -0.015em;
+  --stat-lg-size: 56px;     --stat-lg-weight: 700; --stat-lg-track: -0.02em;
+  --code-size: 13px;        --code-line: 1.5;
+
+  /* ---------- Motion ---------- */
+  --duration-fast:    150ms;
+  --duration-normal:  250ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in:  cubic-bezier(0.6, 0, 0.8, 0.2);
+}
+
+/* ============================================================
+   Semantic typography classes — apply by class.
+   Never hand-tune individual headings; pick a slot.
+   ============================================================ */
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--display-size);
+  line-height: var(--display-line);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-track);
+  color: var(--ink-primary);
+}
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-size: var(--h1-size);
+  line-height: var(--h1-line);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-track);
+  color: var(--ink-primary);
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-size: var(--h2-size);
+  line-height: var(--h2-line);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-track);
+  color: var(--ink-primary);
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: var(--h3-weight);
+  letter-spacing: var(--h3-track);
+  color: var(--ink-primary);
+}
+
+.t-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  font-weight: 400;
+  color: var(--ink-primary);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: 400;
+  color: var(--ink-primary);
+}
+
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  font-weight: 400;
+  color: var(--ink-secondary);
+}
+
+.t-caption {
+  font-family: var(--font-body);
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+/* The finance-materials hierarchy move:
+   uppercase overline instead of colored pill. */
+.t-overline {
+  font-family: var(--font-body);
+  font-size: var(--overline-size);
+  line-height: var(--overline-line);
+  font-weight: var(--overline-weight);
+  letter-spacing: var(--overline-track);
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+
+.t-table-header {
+  font-family: var(--font-body);
+  font-size: var(--table-header-size);
+  font-weight: var(--table-header-weight);
+  letter-spacing: var(--table-header-track);
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+
+.t-stat {
+  font-family: var(--font-display);
+  font-size: var(--stat-size);
+  line-height: var(--stat-line);
+  font-weight: var(--stat-weight);
+  letter-spacing: var(--stat-track);
+  color: var(--ink-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-stat-lg {
+  font-family: var(--font-display);
+  font-size: var(--stat-lg-size);
+  line-height: var(--stat-line);
+  font-weight: var(--stat-lg-weight);
+  letter-spacing: var(--stat-lg-track);
+  color: var(--ink-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-code, code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: var(--code-size);
+  line-height: var(--code-line);
+  color: var(--ink-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Base element styles — defaults that match the system.
+   ============================================================ */
+
+html, body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  background: var(--surface-canvas);
+  color: var(--ink-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font-size: var(--h1-size);   line-height: var(--h1-line); font-weight: var(--h1-weight); letter-spacing: var(--h1-track); }
+h2 { font-size: var(--h2-size);   line-height: var(--h2-line); font-weight: var(--h2-weight); letter-spacing: var(--h2-track); }
+h3 { font-size: var(--h3-size);   line-height: var(--h3-line); font-weight: var(--h3-weight); }
+p  { font-size: var(--body-size); line-height: var(--body-line); }
+
+/* Tabular numerics on numeric-bearing elements */
+.tabular, td.right, .stat, .funnel-bar { font-variant-numeric: tabular-nums; }
+
+/* Focus ring — sage, never blue */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
