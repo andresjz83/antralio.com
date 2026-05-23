@@ -4,3 +4,11 @@ node = "22"
 [tasks.pre-commit]
 description = "Run CSS browser compatibility check"
 run = "./scripts/lint-css.sh"
+
+[tasks.build]
+description = "Build static assets for Cloudflare Pages"
+run = "./scripts/build.sh"
+
+[tasks.serve]
+description = "Start local dev server"
+run = "npx serve -l 3000 ."

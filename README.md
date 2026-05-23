@@ -1,6 +1,16 @@
 # antralio.com
 
-Static landing page for Antralio. Hosted on GitHub Pages.
+Static landing page for Antralio. Hosted on Cloudflare Pages.
+
+## Cloudflare Pages
+
+Use these project settings:
+
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node version: `22`
+
+The custom domain (`antralio.com`) should be configured in Cloudflare Pages, not with a GitHub Pages `CNAME` file.
 
 ## Setup
 
@@ -11,6 +21,14 @@ npm install                              # install dev dependencies
 mise trust                               # trust the mise.toml config
 mise generate git-pre-commit --write     # install the pre-commit hook
 ```
+
+## Build
+
+```bash
+npm run build
+```
+
+This copies the static site into `dist/`, which is what Cloudflare Pages deploys.
 
 ## Pre-commit hook
 

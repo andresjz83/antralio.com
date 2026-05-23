@@ -1,5 +1,9 @@
 {
   "private": true,
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "lint:css": "./scripts/lint-css.sh"
+  },
   "devDependencies": {
     "stylelint": "^17.5.0",
     "stylelint-browser-compat": "^1.0.0-beta.188",
